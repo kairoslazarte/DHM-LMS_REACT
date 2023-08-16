@@ -179,9 +179,9 @@ const UploadNewslettersMemos = () => {
                                         rel="noopener noreferrer"
                                     >
                                         <span className="text-[#e42222] group-hover:text-white font-medium break-words">
-                                            {newsletterMemo?.file?.replace("uploads\\newsletterUploads\\", "")}
+                                            {newsletterMemo?.file?.replace("www.dhmqc-lms.com\\uploads\\newsletterUploads\\", "")}
                                         </span>
-                                        <span className="text-blue-500 text-sm italic group-hover:underline pt-2 group-hover:text-white">Click to open in new tab (edited)</span>
+                                        <span className="text-blue-500 text-sm italic group-hover:underline pt-2 group-hover:text-white">Click to open in new tab</span>
                                     </a>
                                 </div>
                             ) : (
