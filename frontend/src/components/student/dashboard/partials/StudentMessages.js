@@ -61,11 +61,6 @@ const StudentMessages = ({ studentDetails }) => {
         getStudentDetails()
     }, [setTeachers, setStudent])
 
-    console.log(selectedTeacher)
-
-    console.log(studentMessage)
-    console.log(teacherMessage)
-
     return (
         <div className="flex flex-col h-full p-5 bg-white">
             <div className="flex items-center justify-end space-x-4 w-full border-b border-gray-200 pb-5">

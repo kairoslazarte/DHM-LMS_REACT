@@ -1,5 +1,4 @@
 const StudentSubjectDetails = ({ subjectDetails, setOpenSubjectDetails, teacher }) => {
-    console.log(subjectDetails)
     return (
         <div>
             <button

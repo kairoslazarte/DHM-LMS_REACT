@@ -80,8 +80,6 @@ const UploadNewslettersMemos = () => {
         getNewslettersMemos()
     }, [setNewslettersMemos])
 
-    console.log(newslettersMemos)
-
     return (
         <div className="w-full h-full xl:px-8 px-4 mx-auto py-20">
             <div className="my-auto h-full">

@@ -3,9 +3,6 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XIcon as XMarkIcon  } from '@heroicons/react/outline'
 
 const TeacherDetailsSlideover = ({ open, setOpen, teacherDetails }) => {
-    if (teacherDetails) {
-        console.log(teacherDetails)
-    }
     return (
         <Transition.Root show={open} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={setOpen} open>

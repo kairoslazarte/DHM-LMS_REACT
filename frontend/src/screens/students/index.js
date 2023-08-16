@@ -16,8 +16,6 @@ const Student = () => {
     
     const [activeComponent, setActiveComponent] = useState("Home")
     const sidebarValue = useMemo(() => ({activeComponent, setActiveComponent}), [activeComponent, setActiveComponent])
-
-    console.log(student)
     return (
         <>
             <StudentLoginContext.Provider value={userValue}>

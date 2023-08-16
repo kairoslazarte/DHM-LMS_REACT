@@ -167,7 +167,6 @@ const CreateNewClass = () => {
         e.preventDefault();
         try {
             if (!createNewSection && !createNewCategory && !createNewLevel) {
-                console.log("andito ako");
                 const { data } = await axios.post(
                     "/api/admins/create-section",
                     {
@@ -178,7 +177,6 @@ const CreateNewClass = () => {
                 setSection(data);
                 setStep(3);
             } else {
-                console.log("im here");
                 const { data } = await axios.post(
                     "/api/admins/create-section",
                     {
@@ -206,7 +204,7 @@ const CreateNewClass = () => {
             setSubject(data);
             setStep(4);
         } catch (error) {
-            alert("Subject already Exists for this Section!");
+            alert("Subject already exists for this Section!");
             console.log(error);
         }
     };

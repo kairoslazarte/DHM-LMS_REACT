@@ -56,8 +56,6 @@ const TeacherAdvisoryClassDetails = ({ sectionID, setOpenSectionDetails }) => {
     useEffect(() => {
         getSectionDetails()
     }, setSection)
-
-    console.log(section)
     return (
         <div>
              <button

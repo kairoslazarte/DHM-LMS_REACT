@@ -48,8 +48,6 @@ const StudentClassesLists= ({ studentDetails }) => {
         getSubjects()
         getSection()
     }, [setSubjects, setTeachers, setSection])
-
-    console.log(section)
     
     return (
         <div>

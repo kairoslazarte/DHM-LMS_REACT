@@ -5,8 +5,6 @@ const TeacherAdvisoryClassesLists = ({ teacherDetails }) => {
     const [teacher, setTeacher] = useState(teacherDetails)
     const [selectedSection, setSelectedSection] = useState(null)
     const [openSectionDetails, setOpenSectionDetails] = useState(false)
-
-    console.log(teacher)
     return (
         !openSectionDetails ? (
             <div className="flex flex-col space-y-8">
