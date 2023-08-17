@@ -20,17 +20,17 @@ const StudentLogin = () => {
     }
 
     return (
-        <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div className="w-full max-w-md">
+        <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#B3FFAE]">
+            <div className="w-full max-w-md shadow-md rounded-md p-8 bg-[#F8FFDB]">
                 <div>
                     <a href="/student">
                         <img
-                            className="mx-auto h-20 w-auto"
+                            className="mx-auto h-20 w-auto animate-pulse"
                             src="/static/images/dhm-logo-sm.png"
                             alt="DHM logo small"
                         />
                     </a>
-                    <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+                    <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900 animate-bounce">
                         Sign in as Student
                     </h2>
                 </div>
@@ -74,7 +74,7 @@ const StudentLogin = () => {
                     <div className="pt-3">
                         <button
                             type="submit"
-                            className="group relative flex w-full justify-center rounded-md border border-transparent bg-yellow-400 py-2 px-4 text-sm font-medium text-white hover:bg-yellow-600 transition duration-200 focus:outline-none focus:ring-2 focus:ring-greenborder-green-700 focus:ring-offset-2"
+                            className="group relative flex w-full justify-center rounded-md border border-transparent bg-[#FF6464] py-2 px-4 text-sm font-medium text-white hover:bg-opacity-75 transition duration-200 focus:outline-none focus:ring-2 focus:ring-greenborder-green-700 focus:ring-offset-2"
                         >
                             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                             </span>
