@@ -23,7 +23,7 @@ const TeacherLogin = () => {
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#B3FFAE]">
             <div className="w-full max-w-md shadow-md rounded-md p-8 bg-[#F8FFDB]">
                 <div>
-                    <a href="/student">
+                    <a href="/teacher">
                         <img
                             className="mx-auto h-20 w-auto animate-pulse"
                             src="/static/images/dhm-logo-sm.png"
