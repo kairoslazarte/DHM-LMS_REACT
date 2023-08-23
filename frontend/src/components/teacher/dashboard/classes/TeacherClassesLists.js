@@ -35,7 +35,7 @@ const TeacherClassesLists = ({ teacherDetails }) => {
 
     return (
         teacherDetails ? (
-            teacherDetails?.classes ? (
+            teacherDetails?.classes?.length != 0 ? (
                 !openSubjectDetails ? (
                     <div className="grid grid-cols-3 gap-4">
                         {subjects?.map((subject) => (
