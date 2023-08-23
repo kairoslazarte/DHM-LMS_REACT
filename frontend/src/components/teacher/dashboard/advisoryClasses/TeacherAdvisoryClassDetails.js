@@ -1,10 +1,12 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import AdvisoryClassStudentsListSlideover from "./AdvisoryClassStudentsListSlideover"
 
 const TeacherAdvisoryClassDetails = ({ sectionID, setOpenSectionDetails }) => {
     const [file, setFile] = useState('')
     const [uploading, setUploading] = useState(false)
     const [section, setSection] = useState(null)
+    const [open, setOpen] = useState(false)
 
     const getSectionDetails = async() => {
         try {
@@ -56,10 +58,10 @@ const TeacherAdvisoryClassDetails = ({ sectionID, setOpenSectionDetails }) => {
     useEffect(() => {
         getSectionDetails()
     }, setSection)
-    
+
     return (
         <div>
-             <button
+            <button
                 className="bg-red-700 px-4 py-2 text-white rounded-md hover:opacity-70 transition duration-200 mr-auto"
                 onClick={() => setOpenSectionDetails(false)}
             >
@@ -72,7 +74,16 @@ const TeacherAdvisoryClassDetails = ({ sectionID, setOpenSectionDetails }) => {
                         {section?.section}  
                         <span className="italic text-gray-800 font-normal text-sm pl-3">(ID: {section?._id})</span>
                     </h2>
-                    <h4 className="font-medium text-lg">Students: {section?.students?.length}</h4>
+                    <div className="flex flex-row space-x-4 items-center">
+                        <h4 className="font-medium text-lg">Students: {section?.students?.length}</h4>
+                        <button 
+                            type="button"
+                            className="bg-blue-700 text-white px-3 py-1.5 rounded-md text-sm"
+                            onClick={() => setOpen(open => !open)}
+                        >
+                            View students
+                        </button>
+                    </div>
                     <h4 className="font-medium text-lg">Subjects: {section?.subjects?.length}</h4>
                 </div>
 
@@ -116,6 +127,8 @@ const TeacherAdvisoryClassDetails = ({ sectionID, setOpenSectionDetails }) => {
                     )}
                 </div>
             </div>
+            
+            <AdvisoryClassStudentsListSlideover open={open} setOpen={setOpen} sectionDetails={section}/>
         </div>
     )
 }
