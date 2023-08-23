@@ -147,7 +147,7 @@ const TeacherSubjectDetails = ({ setOpenSubjectDetails, subjectDetails }) => {
                             href={subjectFile?.file} 
                             download
                         >   <div className="flex flex-col justify-center h-full">
-                                <span className="text-gray-800 font-medium">
+                                <span className="text-gray-800 font-medium break-words">
                                     {subjectFile?.file?.replace("/uploads/subjectUploads/", "")}
                                 </span>
                                 <span className="text-blue-500 text-sm italic group-hover:underline pt-4">Click to download</span>

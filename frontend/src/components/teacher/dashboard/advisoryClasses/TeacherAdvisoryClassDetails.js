@@ -103,9 +103,7 @@ const TeacherAdvisoryClassDetails = ({ sectionID, setOpenSectionDetails }) => {
                 </div>
 
                 <div className="pt-10 flex flex-col space-y-6">
-                    <h2 className="text-2xl font-medium">Files:</h2>
-
-                    {section?.files ? (
+                    {section?.files?.length != 0 ? (
                         <div className="grid grid-cols-4 gap-4 pt-5">
                             {section?.files?.map((file) => (
                                 <a
@@ -114,7 +112,7 @@ const TeacherAdvisoryClassDetails = ({ sectionID, setOpenSectionDetails }) => {
                                     href={file?.name} 
                                     download
                                 >   <div className="flex flex-col justify-center h-full">
-                                        <span className="text-gray-800 font-medium">
+                                        <span className="text-gray-800 font-medium break-words">
                                             {file?.name?.replace("/uploads/sectionUploads/", "")}
                                         </span>
                                         <span className="text-blue-500 text-sm italic group-hover:underline pt-4">Click to download</span>
