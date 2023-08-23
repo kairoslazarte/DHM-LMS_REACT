@@ -52,9 +52,9 @@ const ViewNewsAndUpdates = () => {
                     {newsUpdates?.map((newsUpdate) => (
                         <div key={newsUpdate?._id} className="flex flex-col px-4 xl:px-8 py-6 xl:py-10 bg-white shadow-lg rounded-xl">
                             {newsUpdate?.image && (
-                                <div className="h-[600px] bg-orange-50 rounded-md">
+                                <div className="md:h-[600px] bg-orange-50 rounded-md">
                                     <img 
-                                        className='object-cover h-full mx-auto'
+                                        className='object-contain md:object-cover md:h-full mx-auto'
                                         src={newsUpdate?.image}
                                     />
                                 </div>
