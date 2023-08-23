@@ -77,7 +77,7 @@ const ViewNewsAndUpdates = () => {
                                 </style>
                             </Helmet>
                             {newsUpdate?.text && (
-                                <div id="news-updates-content" className={`text-xl ${newsUpdate?.image && 'pt-8'}`} dangerouslySetInnerHTML={{ __html: newsUpdate?.text }} />
+                                <div id="news-updates-content" className={`text-xl break-words ${newsUpdate?.image && 'pt-8'}`} dangerouslySetInnerHTML={{ __html: newsUpdate?.text }} />
                             )}
                         </div>
                     ))}
