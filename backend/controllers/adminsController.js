@@ -9,6 +9,7 @@ import Subject from "../models/subjectsModel.js";
 import Student from "../models/studentsModel.js";
 import NewsUpdates from "../models/newsUpdatesModel.js";
 import NewsletterMemos from "../models/newsletterModel.js";
+import User from "../models/userModel.js";
 
 const authAdmin = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
@@ -72,7 +73,17 @@ const createTeacherAccount = asyncHandler(async (req, res) => {
         zoom_password: zoom_password
     });
 
+   
+
     const newTeacher = await teacher.save();
+
+    const newUser = new User({
+        _id: newTeacher._id,
+        full_name: newTeacher.first_name + " " + newTeacher.middle_name + " " + newTeacher.last_name,
+        email: newTeacher.email,
+        password: newTeacher.password
+    })
+    await newUser.save();
     res.status(201).json(newTeacher);
 });
 
@@ -269,6 +280,9 @@ const deleteTeachers = asyncHandler(async (req, res) => {
         await Teacher.deleteMany({
             _id: { $in: ids },
         });
+        await User.deleteMany({
+            _id: { $in: ids },
+        })
         res.status(204).send("Delete Teacher/s successfully.");
     } catch (error) {
         console.log(error);
