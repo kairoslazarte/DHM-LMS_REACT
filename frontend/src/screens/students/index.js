@@ -2,13 +2,14 @@ import ViewNewsAndUpdates from "../../components/reusable/ViewNewsAndUpdates"
 import StudentClassesLists from "../../components/student/dashboard/classes/StudentClassesLists"
 import ViewStudentNewslettersMemos from "../../components/student/dashboard/newslettersMemos/ViewStudentNewslettersMemos"
 import StudentHeader from "../../components/student/dashboard/partials/StudentHeader"
-import StudentMessages from "../../components/student/dashboard/partials/StudentMessages"
+import StudentMessages from "../../components/student/dashboard/messages/StudentMessages"
 import StudentSidebar from "../../components/student/dashboard/partials/StudentSidebar"
 import ViewUpdateStudentProfile from "../../components/student/dashboard/profile/ViewUpdateStudentProfile"
 import StudentLogin from "../../components/student/forms/StudentLogin"
 import { StudentLoginContext } from "../../contexts/student/StudentLoginContexts"
 import { StudentSidebarContexts } from "../../contexts/student/StudentSidebarContexts"
 import { useMemo, useState } from "react"
+import ArrowBackButton from "../../components/reusable/ArrowBackButton"
 
 const Student = () => {
     const [student, setStudent] = useState(null)
@@ -37,20 +38,30 @@ const Student = () => {
                                     <StudentHeader studentDetails={student} />
 
                                     <div className="flex flex-row w-full bg-gray-50 h-full">
-                                        <div className="w-full 2xl:px-8 px-4 mt-10">
-                                            {activeComponent == "Home" && (
-                                                <ViewNewsAndUpdates />
-                                            )}
-                                            {activeComponent == `${student?.first_name} ${student?.last_name}` && (
-                                                <ViewUpdateStudentProfile studentDetails={student} />
-                                            )}
-                                            {activeComponent == `${student?.level} - ${student?.section}` && (
-                                                <StudentClassesLists studentDetails={student} />
-                                            )}
-                                            {activeComponent == 'General Newsletters / Memos' && (
-                                                <ViewStudentNewslettersMemos />
-                                            )}
+                                        <div className="w-full 2xl:px-8 px-4 mt-5">
+                                            {activeComponent === "Messages" ? (
+                                                <ArrowBackButton />
+                                            ) : <></>}
+                                            
+                                            <div className="mt-5">
+                                                {activeComponent == "Home" && (
+                                                    <ViewNewsAndUpdates />
+                                                )}
+                                                {activeComponent == `${student?.first_name} ${student?.last_name}` && (
+                                                    <ViewUpdateStudentProfile studentDetails={student} />
+                                                )}
+                                                {activeComponent == `${student?.level} - ${student?.section}` && (
+                                                    <StudentClassesLists studentDetails={student} />
+                                                )}
+                                                {activeComponent == "Messages" && (
+                                                    <StudentMessages />
+                                                )}
+                                                {activeComponent == 'General Newsletters / Memos' && (
+                                                    <ViewStudentNewslettersMemos />
+                                                )}
+                                            </div>
                                         </div>
+                                        
 
                                         {/* <div className="w-[25%] bg-white border-l border-gray-200 h-full fixed right-0">
                                             <StudentMessages studentDetails={student} />           
