@@ -28,7 +28,7 @@ const adminsModel = mongoose.Schema(
             type: Number,
             required: true
         }
-    }
+    },
 )
 
 adminsModel.methods.matchPassword = async function (enteredPassword) {

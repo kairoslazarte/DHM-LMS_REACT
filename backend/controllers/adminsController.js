@@ -25,8 +25,7 @@ const authAdmin = asyncHandler(async (req, res) => {
             middle_name: updatedAdmin.middle_name,
             last_name: updatedAdmin.last_name,
             phone: updatedAdmin.phone,
-            email: updatedAdmin.email,
-            token: generateToken(updatedAdmin._id),
+            email: updatedAdmin.email
         });
         res.status(200);
     } else {
@@ -73,16 +72,17 @@ const createTeacherAccount = asyncHandler(async (req, res) => {
         zoom_password: zoom_password
     });
 
-   
-
     const newTeacher = await teacher.save();
 
     const newUser = new User({
         _id: newTeacher._id,
-        full_name: newTeacher.first_name + " " + newTeacher.middle_name + " " + newTeacher.last_name,
+        full_name: !newTeacher.middle_name ? `${newTeacher.first_name} ${newTeacher.last_name}` : `${newTeacher.first_name} ${newTeacher.middle_name} ${newTeacher.last_name}`,
         email: newTeacher.email,
-        password: newTeacher.password
+        password: newTeacher.password,
+        accountType: "teacher"
     })
+
+    generateToken(newUser._id, res);
     await newUser.save();
     res.status(201).json(newTeacher);
 });
@@ -406,7 +406,7 @@ const createStudentAccount = asyncHandler(async (req, res) => {
         first_name: first_name,
         middle_name: middle_name,
         last_name: last_name,
-        full_name: first_name + " " + middle_name + " " + last_name,
+        full_name: !middle_name ? `${first_name} ${last_name}` : `${first_name} ${middle_name} ${last_name}`,
         email: email,
         address: address,
         password: password,
@@ -448,6 +448,17 @@ const createStudentAccount = asyncHandler(async (req, res) => {
             phone_number: phone,
         },
     });
+
+    const newUser = new User({
+        _id: newStudent._id,
+        full_name: !newStudent.middle_name ? `${newStudent.first_name} ${newStudent.last_name}` : `${newStudent.first_name} ${newStudent.middle_name} ${newStudent.last_name}`,
+        email: newStudent.email,
+        password: newStudent.password,
+        accountType: "student"
+    })
+
+    generateToken(newUser._id, res);
+    await newUser.save();
     await currentSection.save();
     res.status(201).json(newStudent);
 });
@@ -489,6 +500,9 @@ const deleteStudents = asyncHandler(async (req, res) => {
                 },
             }
         );
+        await User.deleteMany({
+            _id: { $in: ids },
+        })
         res.status(204).send("Delete Student/s successfully.");
     } catch (error) {
         console.log(error);
@@ -617,7 +631,7 @@ const updateStudentAccount = asyncHandler(async (req, res) => {
             first_name: first_name,
             middle_name: middle_name,
             last_name: last_name,
-            full_name: first_name + " " + middle_name + " " + last_name,
+            full_name: !middle_name ? `${first_name} ${last_name}` : `${first_name} ${middle_name} ${last_name}`,
             email: email,
             address: address,
             image: image,
@@ -1069,8 +1083,19 @@ const updateTeacherAccount = asyncHandler(async (req, res) => {
             zoom_password: zoom_password
         }
     )
+
+    const user = await User.findOneAndUpdate(
+        {
+            '_id': id
+        },
+        {
+            full_name: !middle_name ? `${first_name} ${last_name}` : `${first_name} ${middle_name} ${last_name}`,
+            email: email
+        }
+    )
     
     await teacher.save()
+    await user.save()
     res.status(200).json(teacher)
 });
 

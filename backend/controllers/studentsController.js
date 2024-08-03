@@ -12,8 +12,8 @@ const authStudent = asyncHandler(async (req, res) => {
 
     if (student && (await student.matchPassword(password))) {
         const updatedStudent = await student.save()
-
-        res.json(updatedStudent)
+        generateToken(updatedStudent._id, res)
+        res.json(updatedStudent);
         res.status(200)
     }  else {
         res.status(401)

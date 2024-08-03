@@ -11,10 +11,11 @@ const authTeacher = asyncHandler(async (req, res) => {
     const teacher = await Teacher.findOne({ email })
 
     if (teacher && (await teacher.matchPassword(password))) {
-        const updatedTeacher = await teacher.save()
+        const updatedTeacher = await teacher.save();
 
-        res.json(updatedTeacher)
-        res.status(200)
+        generateToken(updatedTeacher._id, res)
+        res.json(updatedTeacher);
+        res.status(200);
     }  else {
         res.status(401)
         throw new Error('Invalid email or password')
