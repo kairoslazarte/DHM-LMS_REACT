@@ -61,7 +61,7 @@ const createTeacherAccount = asyncHandler(async (req, res) => {
         first_name: first_name,
         middle_name: middle_name,
         last_name: last_name,
-        full_name: !newTeacher.middle_name ? `${newTeacher.first_name} ${newTeacher.last_name}` : `${newTeacher.first_name} ${newTeacher.middle_name} ${newTeacher.last_name}`,
+        full_name: !middle_name ? `${first_name} ${last_name}` : `${first_name} ${middle_name} ${last_name}`,
         phone: phone,
         email: email,
         password: password,
