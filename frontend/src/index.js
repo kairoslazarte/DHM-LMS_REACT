@@ -7,6 +7,9 @@ import Admin from './screens/admins';
 import './App.css';
 import Student from './screens/students';
 import Teacher from './screens/teachers';
+import { SocketContextProvider } from './contexts/socket/SocketContext';
+import { Toaster } from "react-hot-toast";
+import { AuthContextProvider } from './contexts/auth/AuthContext';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +37,12 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <SocketContextProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </SocketContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
 

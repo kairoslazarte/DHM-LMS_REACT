@@ -1,9 +1,11 @@
 import { TeacherLoginContext } from '../../../contexts/teacher/TeacherLoginContexts'
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
+import { useAuthContext } from '../../../contexts/auth/AuthContext'
 
 const TeacherLogin = () => {
     const { teacher, setTeacher } = useContext(TeacherLoginContext)
+    const { setAuthUser } = useAuthContext();
     const [errorLogin, setErrorLogin] = useState(false)
 
     const loginHandler = async (e) => {
@@ -13,9 +15,10 @@ const TeacherLogin = () => {
                 email: e.target.email.value,
                 password: e.target.password.value
             })
-            setTeacher(teacher)
+            setTeacher(teacher);
+            setAuthUser(teacher);
         } catch (error) {
-            setErrorLogin(true)
+            setErrorLogin(true);
         }   
     }
 

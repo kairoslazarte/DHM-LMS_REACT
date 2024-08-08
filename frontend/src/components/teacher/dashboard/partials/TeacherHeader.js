@@ -13,7 +13,7 @@ const TeacherHeader = ({ teacherDetails }) => {
                     <div className="relative">
                         <img 
                             className='h-10 w-10 rounded-full object-cover cursor-pointer'
-                            src={teacherDetails?.image}
+                            src={teacherDetails?.image ? teacherDetails?.image : '/static/images/default_user.png'}
                             onClick={() => setOpenUserDropdown((open) => !open)}
                         />
                         {openUserDropdown && (

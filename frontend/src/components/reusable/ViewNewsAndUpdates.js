@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import { Helmet } from "react-helmet";
 import Loader from "./Loader";
 
-
 const ViewNewsAndUpdates = () => {
     const [newsUpdates, setNewsUpdates] = useState(null)
 

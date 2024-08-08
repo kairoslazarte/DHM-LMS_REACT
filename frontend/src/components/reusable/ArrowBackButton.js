@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { ArrowCircleLeftIcon } from "@heroicons/react/outline";
 import { StudentSidebarContexts } from "../../contexts/student/StudentSidebarContexts";
+import { TeacherSidebarContexts } from "../../contexts/teacher/TeacherSidebarContext";
 
-const ArrowBackButton = () => {
-    const {activeComponent, setActiveComponent} = useContext(StudentSidebarContexts);
+const ArrowBackButton = ({component}) => {
+    const {setActiveComponent} = useContext(component === "teacher" ? TeacherSidebarContexts : StudentSidebarContexts);
 
     return (
         <div>

@@ -1,10 +1,12 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { StudentLoginContext } from '../../../contexts/student/StudentLoginContexts'
+import { useAuthContext } from '../../../contexts/auth/AuthContext'
 
 const StudentLogin = () => {
-    const { student, setStudent } = useContext(StudentLoginContext)
-    const [errorLogin, setErrorLogin] = useState(false)
+    const { student, setStudent } = useContext(StudentLoginContext);
+    const { setAuthUser } = useAuthContext();
+    const [errorLogin, setErrorLogin] = useState(false);
 
     const loginHandler = async (e) => {
         e.preventDefault()
@@ -13,11 +15,17 @@ const StudentLogin = () => {
                 email: e.target.email.value,
                 password: e.target.password.value
             })
-            setStudent(student)
+            
+            if (student) {
+                setStudent(student)
+                setAuthUser(student)
+            }
         } catch (error) {
             setErrorLogin(true)
         }   
     }
+
+
 
     return (
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-[#B3FFAE]">

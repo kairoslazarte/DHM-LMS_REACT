@@ -61,6 +61,7 @@ const createTeacherAccount = asyncHandler(async (req, res) => {
         first_name: first_name,
         middle_name: middle_name,
         last_name: last_name,
+        full_name: !newTeacher.middle_name ? `${newTeacher.first_name} ${newTeacher.last_name}` : `${newTeacher.first_name} ${newTeacher.middle_name} ${newTeacher.last_name}`,
         phone: phone,
         email: email,
         password: password,
@@ -88,8 +89,7 @@ const createTeacherAccount = asyncHandler(async (req, res) => {
 });
 
 const getAllTeachers = asyncHandler(async (req, res) => {
-    const teachers = await Teacher.find();
-
+    const teachers = await Teacher.find().select("-password");
     res.status(200).json(teachers);
 });
 
@@ -464,7 +464,7 @@ const createStudentAccount = asyncHandler(async (req, res) => {
 });
 
 const getAllStudents = asyncHandler(async (req, res) => {
-    const students = await Student.find();
+    const students = await Student.find().select("-password");
     res.status(200).json(students);
 });
 
@@ -1073,6 +1073,7 @@ const updateTeacherAccount = asyncHandler(async (req, res) => {
             first_name: first_name,
             middle_name: middle_name,
             last_name: last_name,
+            full_name: !middle_name ? `${first_name} ${last_name}` : `${first_name} ${middle_name} ${last_name}`,
             email: email,
             address: address,
             image: image,

@@ -1,3 +1,3 @@
 import { createContext } from "react";
 
-export const AdminSidebarContexts = createContext(null) 
+export const AdminSidebarContexts = createContext("") 
