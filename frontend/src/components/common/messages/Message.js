@@ -19,7 +19,7 @@ const Message = ({ message }) => {
 			<div className='chat-image avatar'>
 				<div className='w-10 rounded-full'>
 					<img 
-                        alt={authUser.full_name} 
+                        alt={authUser?.first_name} 
                         src={!profilePic ? "../static/images/default_user.png" : profilePic} 
                         className="bg-white"
                     />
