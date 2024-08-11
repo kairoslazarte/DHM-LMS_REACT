@@ -21,10 +21,6 @@ const useListenMessages = ({
 			const { first_name, last_name, image } = users?.find(user => user?._id === newMessage?.senderId)
 			const { message } = newMessage;
 
-			console.log(first_name);
-			console.log(message);
-			console.log(selectedConversation)
-
 			if (newMessage?.senderId === selectedConversation?._id) {
 				setMessages([...messages, newMessage]);
 			} else {

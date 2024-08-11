@@ -16,11 +16,11 @@ const MessagesContainer = () => {
 	return (
         <div className='md:min-w-[450px] flex flex-col'>
             {!selectedConversation ? (
-                <div className="h-[40rem] sm:h-[60rem]">
+                <div className="h-[40rem] sm:h-[40rem]">
                     <NoChatSelected />
                 </div>
             ) : (
-                <div className="bg-yellow-50 h-[30rem] sm:h-[60rem] flex flex-col rounded-md shadow">
+                <div className="bg-yellow-50 h-[30rem] sm:h-[40rem] flex flex-col rounded-md shadow">
                     {/* Header */}
                     <div className='bg-green-300 rounded-t-md px-4 py-2 mb-2'>
                         <span className='label-text text-gray-900'>To:</span>{" "}
