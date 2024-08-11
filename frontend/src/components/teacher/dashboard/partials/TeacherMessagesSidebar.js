@@ -17,7 +17,7 @@ const TeacherMessagesSidebar = () => {
             return toast.error("Search term must be atleast 3 characters long");
         }
 
-        const student = students.find((c) => c?.first_name.toLowerCase().includes(searchInput.toLocaleLowerCase()));
+        const student = students.find((c) => c?.full_name.toLowerCase().includes(searchInput.toLocaleLowerCase()));
 
         if(student) {
             setSearchStudentResult(student);

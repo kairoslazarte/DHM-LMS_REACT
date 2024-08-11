@@ -36,7 +36,7 @@ const Conversation = ({ conversation, lastIdx, setSearchResult }) => {
 
                 <div className='flex flex-col flex-1'>
                     <div className='flex gap-3 justify-between'>
-                        <p className='font-bold text-black'>{conversation?.first_name} {conversation?.last_name}</p>
+                        <p className='font-bold text-black'>{conversation?.full_name}</p>
                         {/* <span className='text-xl'>{emoji}</span> */}
                     </div>
                 </div>
