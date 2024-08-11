@@ -18,12 +18,14 @@ const useListenMessages = ({
 			const sound = new Audio(notificationSound);
 			sound.play();
 
-			const { first_name, last_name, image } = users?.find(user => user?._id === newMessage.senderId)
+			const { first_name, last_name, image } = users?.find(user => user?._id === newMessage?.senderId)
 			const { message } = newMessage;
 
-			if (newMessage.senderId === selectedConversation?._id) {
+			if (newMessage?.senderId === selectedConversation?._id) {
 				setMessages([...messages, newMessage]);
 			} else {
+				console.log('i am here');
+				
 				toast.custom((t) => (
 					<div
 						className={`${
