@@ -24,8 +24,6 @@ const useListenMessages = ({
 			if (newMessage?.senderId === selectedConversation?._id) {
 				setMessages([...messages, newMessage]);
 			} else {
-				console.log('i am here');
-				
 				toast.custom((t) => (
 					<div
 						className={`${
