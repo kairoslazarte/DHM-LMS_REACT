@@ -40,7 +40,7 @@ const TeacherLogin = () => {
                             alt="DHM logo small"
                         />
                     </a>
-                    <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+                    <h2 className="mt-4 text-center text-3xl font-bold tracking-tight text-gray-900">
                         Sign in as Teacher
                     </h2>
                 </div>
